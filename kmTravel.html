@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>西安三日游升级攻略 - 含大唐芙蓉园</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
+        }
+
+        .header h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .travel-info {
+            background: rgba(255,255,255,0.9);
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+        }
+
+        .travel-info h3 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .info-item {
+            background: #f8fafc;
+            padding: 15px;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+        }
+
+        .info-item strong {
+            color: #333;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .day-section {
+            background: rgba(255,255,255,0.95);
+            margin-bottom: 40px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        }
+
+        .day-header {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 25px;
+            text-align: center;
+        }
+
+        .day-header h2 {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+
+        .day-timeline {
+            padding: 30px;
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 60px;
+            margin-bottom: 30px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: 0;
+            width: 3px;
+            height: 100%;
+            background: #667eea;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 12px;
+            top: 8px;
+            width: 18px;
+            height: 18px;
+            background: #667eea;
+            border-radius: 50%;
+            border: 3px solid white;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+
+        .timeline-content {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .attraction-card {
+            margin-bottom: 20px;
+        }
+
+        .card-title {
+            font-size: 1.3em;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .card-info {
+            color: #666;
+            margin-bottom: 8px;
+            font-size: 0.9em;
+        }
+
+        .card-rating {
+            color: #f59e0b;
+            font-weight: bold;
+        }
+
+        .card-type {
+            background: #667eea;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8em;
+            display: inline-block;
+            margin-top: 10px;
+        }
+
+        .route-info {
+            background: #f0f9ff;
+            padding: 15px;
+            border-radius: 10px;
+            border-left: 4px solid #0ea5e9;
+            margin-top: 15px;
+        }
+
+        .taxi-info {
+            background: #fef3c7;
+            padding: 12px;
+            border-radius: 8px;
+            border-left: 4px solid #f59e0b;
+            margin-top: 10px;
+            font-size: 0.9em;
+        }
+
+        .map-integration {
+            background: rgba(255,255,255,0.95);
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+            margin-top: 40px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        }
+
+        .map-button {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 30px;
+            font-size: 1.1em;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: transform 0.3s ease;
+            box-shadow: 0 8px 25px rgba(102,126,234,0.3);
+            margin: 10px;
+        }
+
+        .map-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 35px rgba(102,126,234,0.4);
+        }
+
+        .tips {
+            background: rgba(255,247,230,0.95);
+            padding: 25px;
+            border-radius: 15px;
+            margin-top: 30px;
+            border-left: 5px solid #f59e0b;
+        }
+
+        .tips h3 {
+            color: #d97706;
+            margin-bottom: 15px;
+        }
+
+        .tips ul {
+            list-style: none;
+        }
+
+        .tips li {
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .tips li:before {
+            content: "💡";
+            position: absolute;
+            left: 0;
+        }
+
+        .food-emoji {
+            font-size: 1.5em;
+            margin-right: 5px;
+        }
+
+        .highlight {
+            background: linear-gradient(120deg, #a8edea 0%, #fed6e3 100%);
+            padding: 15px;
+            border-radius: 10px;
+            margin: 15px 0;
+            border-left: 4px solid #ff6b6b;
+        }
+
+        .new-addition {
+            background: linear-gradient(120deg, #ffecd2 0%, #fcb69f 100%);
+            padding: 15px;
+            border-radius: 10px;
+            margin: 15px 0;
+            border-left: 4px solid #ff8c42;
+        }
+
+        .photo-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .photo-item {
+            background: #f3f4f6;
+            padding: 8px;
+            border-radius: 6px;
+            text-align: center;
+            font-size: 0.8em;
+            color: #666;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2em;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .timeline-item {
+                padding-left: 50px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>🏛️ 西安三日游升级攻略</h1>
+            <p>7月9日-11日 | 新增大唐芙蓉园盛唐文化体验</p>
+        </header>
+
+        <div class="travel-info">
+            <h3>📋 升级版行程概览</h3>
+            <div class="info-grid">
+                <div class="info-item">
+                    <strong>🚄 抵达时间</strong>
+                    7月9日下午2:00 西安北站
+                </div>
+                <div class="info-item">
+                    <strong>🏨 住宿酒店</strong>
+                    西安富力希尔顿酒店<br>
+                    <small>新城区东新街319号</small>
+                </div>
+                <div class="info-item">
+                    <strong>🌟 新增亮点</strong>
+                    大唐芙蓉园 - 盛唐皇家园林<br>
+                    <small>与大唐不夜城完美呼应</small>
+                </div>
+                <div class="info-item">
+                    <strong>🚂 离开时间</strong>
+                    7月11日下午2:00前 西安站
+                </div>
+            </div>
+        </div>
+
+        <!-- 第一天 -->
+        <div class="day-section">
+            <div class="day-header">
+                <h2>📅 第一天 (7月9日) - 抵达与夜景跟拍</h2>
+                <p>从西安北站到酒店，晚上大唐不夜城跟拍</p>
+            </div>
+            <div class="day-timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="attraction-card">
+                            <div class="card-title">🚄 14:00 抵达西安北站</div>
+                            <div class="card-info">📍 未央区元朔路</div>
+                            <div class="taxi-info">
+                                🚗 打车到酒店：约45元，车程43分钟<br>
+                                建议使用高德地图叫车功能
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="attraction-card">
+                            <div class="card-title">🏨 15:00 入住西安富力希尔顿酒店</div>
+                            <div class="card-info">📍 新城区东新街319号</div>
+                            <div class="card-info">⭐ 评分：4.6 ｜ 💰 约600元/晚</div>
+                            <div class="card-type">五星级酒店</div>
+                            <div class="route-info">
+                                🛎️ 办理入住，休息调整<br>
+                                💼 整理行李，准备晚上跟拍
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="attraction-card">
+                            <div class="card-title">🍽️ 17:30 酒店附近晚餐</div>
+                            <div class="card-info">建议在酒店餐厅或附近用餐</div>
+                            <div class="route-info">
+                                为跟拍做准备，建议轻食为主
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="highlight">
+                            <div class="card-title">📸 19:00 大唐不夜城跟拍</div>
+                            <div class="card-info">📍 雁塔区慈恩寺遗址公园南侧</div>
+                            <div class="card-info">⭐ 评分：4.5 ｜ 🎭 盛唐文化街区</div>
+                            <div class="card-type">夜景必拍</div>
+                            <div class="taxi-info">
+                                🚗 从酒店打车：约18元，车程33分钟
+                            </div>
+                            <div class="route-info">
+                                ✨ 最佳拍摄时间：19:00-22:00<br>
+                                📷 推荐拍摄点：大雁塔北广场、步行街中心<br>
+                                🎪 现场有街头表演、灯光秀等
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="attraction-card">
+                            <div class="card-title">🌙 22:30 返回酒店休息</div>
+                            <div class="taxi-info">
+                                🚗 打车回酒店：约18元，车程33分钟
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 第二天 -->
+        <div class="day-section">
+            <div class="day-header">
+                <h2>📅 第二天 (7月10日) - 大唐文化深度体验</h2>
+                <p>购物、美食、皇家园林、古城墙完整体验</p>
+            </div>
+            <div class="day-timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="attraction-card">
+                            <div class="card-title">🌅 9:00 酒店早餐</div>
+                            <div class="route-info">
+                                在酒店享用丰盛早餐，为一天行程做准备
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="attraction-card">
+                            <div class="card-title">🛍️ 10:00 SKP西安购物体验</div>
+                            <div class="card-info">📍 莲湖区西大街1号</div>
+                            <div class="card-info">☎️ 029-87651888</div>
+                            <div class="card-type">高端购物</div>
+                            <div class="taxi-info">
+                                🚗 从酒店打车：约15元，车程15分钟
+                            </div>
+                            <div class="route-info">
+                                🕙 建议游览时间：1.5小时<br>
+                                💼 国际一线品牌聚集地，体验现代西安
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="attraction-card">
+                            <div class="card-title">🕌 11:30 回民街美食探索</div>
+                            <div class="card-info">📍 莲湖区北院门</div>
+                            <div class="card-info">⭐ 评分：4.2 ｜ 🍴 美食聚集地</div>
+                            <div class="card-type">美食街</div>
+                            <div class="taxi-info">
+                                🚗 从SKP打车：约8元，车程8分钟
+                            </div>
+                            <div class="route-info">
+                                🥟 各种小吃：胡辣汤、肉夹馍、糖葫芦<br>
+                                🕘 建议游览时间：1小时
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="attraction-card">
+                            <div class="card-title">🍲 12:30 老孙家饭庄 (午餐)</div>
+                            <div class="card-info">📍 莲湖区东关正街78号</div>
+                            <div class="card-info">⭐ 评分：4.2 ｜ 💰 人均：55元</div>
+                            <div class="card-type">陕菜老字号</div>
+                            <div class="taxi-info">
+                                🚗 从回民街打车：约10元，车程10分钟
+                            </div>
+                            <div class="route-info">
+                                <span class="food-emoji">🐑</span>正宗羊肉泡馍，西安必尝美食<br>
+                                传统老字号，历史悠久
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="new-addition">
+                            <div class="card-title">🏯 14:00 大唐芙蓉园 (新增重点景点)</div>
+                            <div class="card-info">📍 曲江新区芙蓉西路99号</div>
+                            <div class="card-info">⭐ 评分：4.4 ｜ 💰 门票：120元</div>
+                            <div class="card-type">盛唐皇家园林</div>
+                            <div class="taxi-info">
+                                🚗 从老孙家打车：约18元，车程30分钟<br>
+                                🚇 可选择地铁4号线到大唐芙蓉园站
+                            </div>
+                            <div class="route-info">
+                                🕐 建议游览时间：3小时<br>
+                                🏛️ 盛唐文化主题公园，皇家园林风格<br>
+                                📸 拍照打卡点：芙蓉湖、凤凰池、竹里馆
+                            </div>
+                            <div class="photo-gallery">
+                                <div class="photo-item">🏔️ 芙蓉山</div>
+                                <div class="photo-item">🦌 鹿园</div>
+                                <div class="photo-item">🏮 凤首壶</div>
+                                <div class="photo-item">🦚 孔雀园</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="attraction-card">
+                            <div class="card-title">☕ 17:30 茶话弄 (下午茶时光)</div>
+                            <div class="card-info">📍 小寨赛格店等多个分店可选</div>
+                            <div class="card-info">⭐ 评分：4.6 ｜ 💰 人均：25元</div>
+                            <div class="card-type">网红茶饮</div>
+                            <div class="route-info">
+                                <span class="food-emoji">🧋</span>新式茶饮，适合休息补充体力<br>
+                                为晚上城墙游览做准备
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="highlight">
+                            <div class="card-title">🏰 18:30 西安城墙 (夜游)</div>
+                            <div class="card-info">📍 碑林区南大街2号</div>
+                            <div class="card-info">⭐ 评分：4.6 ｜ 💰 门票：54元</div>
+                            <div class="card-type">古城地标</div>
+                            <div class="taxi-info">
+                                🚗 就近选择城墙入口，约5-10元车费
+                            </div>
+                            <div class="route-info">
+                                🌙 夜游最佳时间：18:30-21:30<br>
+                                🚴‍♂️ 可租自行车环城墙骑行（推荐）<br>
+                                📸 夜景拍摄绝佳地点，古今对比强烈
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="attraction-card">
+                            <div class="card-title">🌙 21:30 返回酒店休息</div>
+                            <div class="taxi-info">
+                                🚗 从城墙打车回酒店：约12元，车程15分钟
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 第三天 -->
+        <div class="day-section">
+            <div class="day-header">
+                <h2>📅 第三天 (7月11日) - 创意文化与返程</h2>
+                <p>文创体验，品尝美食，轻松返程</p>
+            </div>
+            <div class="day-timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="attraction-card">
+                            <div class="card-title">🌅 9:00 酒店早餐 & 退房</div>
+                            <div class="route-info">
+                                享用早餐，办理退房手续，寄存行李
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="attraction-card">
+                            <div class="card-title">🎨 10:00 曲江创意谷文创体验</div>
+                            <div class="card-info">📍 雁塔区雁南五路99号</div>
+                            <div class="card-info">🎨 创意产业园区</div>
+                            <div class="card-type">文创园区</div>
+                            <div class="taxi-info">
+                                🚗 从酒店打车：约15元，车程20分钟
+                            </div>
+                            <div class="route-info">
+                                🕙 建议游览时间：2小时<br>
+                                🎪 艺术展览、创意工作室、文化活动<br>
+                                📸 现代艺术与传统文化的完美融合
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="attraction-card">
+                            <div class="card-title">🍜 12:30 魏家凉皮 (告别午餐)</div>
+                            <div class="card-info">📍 高新区唐延路35号旺座现代城</div>
+                            <div class="card-info">⭐ 评分：4.5 ｜ 💰 人均：15元</div>
+                            <div class="card-type">陕西特色</div>
+                            <div class="taxi-info">
+                                🚗 从曲江创意谷打车：约12元，车程15分钟
+                            </div>
+                            <div class="route-info">
+                                <span class="food-emoji">🍜</span>正宗陕西凉皮，清爽开胃<br>
+                                最后品尝一次地道西安味道
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="attraction-card">
+                            <div class="card-title">🚂 13:30 前往西安站返程</div>
+                            <div class="card-info">📍 新城区环城北路44号</div>
+                            <div class="taxi-info">
+                                🚗 从魏家凉皮打车到西安站：约15元，车程20分钟<br>
+                                ⏰ 建议13:30出发，确保14:00前到达
+                            </div>
+                            <div class="route-info">
+                                💼 回酒店取行李后直接前往西安站<br>
+                                🎯 准时完成所有行程安排
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 地图集成 -->
+        <div class="map-integration">
+            <h3>🗺️ 高德地图完整行程规划</h3>
+            <p>点击下方按钮，在高德地图中查看包含大唐芙蓉园的完整路线规划</p>
+            <a href="amapuri://workInAmap/createWithToken?polymericId=mcp_1f2b81a1034849e098485714c214d26e&from=MCP" class="map-button">
+                📱 打开高德地图查看升级路线
+            </a>
+            <br>
+            <small>* 已集成大唐芙蓉园的最新行程安排</small>
+        </div>
+
+        <!-- 大唐芙蓉园专属介绍 -->
+        <div class="tips" style="border-left-color: #f97316;">
+            <h3>🏯 大唐芙蓉园深度攻略</h3>
+            <ul>
+                <li>🎫 门票120元，建议网上提前购买可享优惠</li>
+                <li>🚇 可乘地铁4号线直达，大唐芙蓉园站下车</li>
+                <li>📸 必拍景点：芙蓉湖、凤凰池、竹里馆、鹿园</li>
+                <li>🎭 每日有大型实景演出《梦回大唐》(需单独购票)</li>
+                <li>🌸 春秋季节园内花卉最美，拍照效果最佳</li>
+                <li>🚶‍♂️ 全园游览需要3-4小时，建议穿舒适鞋子</li>
+                <li>🍃 园内有多个休息点，可适时补充体力</li>
+                <li>🎨 与大唐不夜城形成完美的大唐文化之旅</li>
+            </ul>
+        </div>
+
+        <!-- 实用贴士 -->
+        <div class="tips">
+            <h3>🎯 升级版旅游贴士</h3>
+            <ul>
+                <li>第二天行程较满，建议早起并合理安排时间</li>
+                <li>大唐芙蓉园和大唐不夜城相距很近，形成完美组合</li>
+                <li>城墙夜游建议租自行车，可以更好地欣赏夜景</li>
+                <li>所有景点间都可打车，费用在8-18元之间</li>
+                <li>第三天行李可以在酒店寄存，方便游览</li>
+                <li>建议下载高德地图APP，方便导航和叫车</li>
+                <li>7月天气较热，注意防晒和补水</li>
+                <li>大唐芙蓉园内有直饮水和休息设施</li>
+            </ul>
+        </div>
+
+        <!-- 美食推荐汇总 -->
+        <div class="tips" style="border-left-color: #ef4444;">
+            <h3>🍽️ 精选美食安排</h3>
+            <ul>
+                <li><span class="food-emoji">🍲</span>老孙家饭庄 - 正宗羊肉泡馍，传统老字号</li>
+                <li><span class="food-emoji">🍜</span>魏家凉皮 - 地道陕西凉皮，清爽可口</li>
+                <li><span class="food-emoji">🧋</span>茶话弄 - 网红茶饮，多种口味选择</li>
+                <li><span class="food-emoji">🥟</span>回民街小吃 - 胡辣汤、肉夹馍、糖葫芦等</li>
+                <li><span class="food-emoji">🍱</span>大唐芙蓉园内餐厅 - 可品尝园内特色餐饮</li>
+            </ul>
+        </div>
+
+        <!-- 交通费用预算 -->
+        <div class="tips" style="border-left-color: #10b981;">
+            <h3>💰 升级版交通费用预算</h3>
+            <ul>
+                <li>🚄 西安北站 → 酒店：约45元</li>
+                <li>🏨 酒店 → 大唐不夜城：约18元 (往返36元)</li>
+                <li>🛍️ 酒店 → SKP → 回民街 → 老孙家：约33元</li>
+                <li>🏯 老孙家 → 大唐芙蓉园：约18元</li>
+                <li>🚴‍♂️ 大唐芙蓉园 → 茶话弄 → 城墙：约15元</li>
+                <li>🏰 城墙 → 酒店：约12元</li>
+                <li>🎨 酒店 → 曲江创意谷 → 魏家凉皮 → 西安站：约42元</li>
+                <li><strong>📊 三日交通总预算：约201元</strong></li>
+            </ul>
+        </div>
+
+        <!-- 门票费用预算 -->
+        <div class="tips" style="border-left-color: #8b5cf6;">
+            <h3>🎫 景点门票费用预算</h3>
+            <ul>
+                <li>🏯 大唐芙蓉园：120元</li>
+                <li>🏰 西安城墙：54元</li>
+                <li>🚴‍♂️ 城墙自行车租赁：45元/100分钟</li>
+                <li>🎭 大唐不夜城：免费开放</li>
+                <li>🛍️ SKP西安：免费参观</li>
+                <li>🕌 回民街：免费逛街</li>
+                <li>🎨 曲江创意谷：免费参观</li>
+                <li><strong>📊 景点门票总预算：约219元</strong></li>
+            </ul>
+        </div>
+
+        <!-- 完美时间安排 -->
+        <div class="tips" style="border-left-color: #06b6d4;">
+            <h3>⏰ 完美时间安排建议</h3>
+            <ul>
+                <li>🌅 每天早餐时间：9:00-9:30，为一天行程储备能量</li>
+                <li>🏯 大唐芙蓉园最佳游览时间：14:00-17:00，避开高峰期</li>
+                <li>🌙 城墙夜游黄金时间：18:30-21:30，灯光效果最佳</li>
+                <li>📸 大唐不夜城拍摄时间：19:00-22:00，夜景最美</li>
+                <li>🍽️ 用餐时间合理分配，避免景点排队高峰</li>
+                <li>🚗 预留充足交通时间，避免行程紧张</li>
+                <li>💤 每晚22:30前回酒店，保证充足休息</li>
+                <li>🎯 第三天13:30准时出发，确保不误点</li>
+            </ul>
+        </div>
+
+        <!-- 拍照攻略 -->
+        <div class="tips" style="border-left-color: #f59e0b;">
+            <h3>📸 专业拍照攻略</h3>
+            <ul>
+                <li>🌃 大唐不夜城跟拍：19:00-22:00，灯光璀璨</li>
+                <li>🏯 大唐芙蓉园：芙蓉湖倒影、凤凰池古韵、竹里馆幽静</li>
+                <li>🏰 西安城墙：登城拍摄古今对比，夜景城市全貌</li>
+                <li>🎨 曲江创意谷：现代艺术装置，文艺范十足</li>
+                <li>🕌 回民街：市井生活，人文纪实风格</li>
+                <li>🌅 建议携带充电宝，确保设备电量充足</li>
+                <li>📱 推荐使用夜景模式和人像模式</li>
+                <li>🎭 抓拍街头表演和互动瞬间</li>
+            </ul>
+        </div>
+
+        <!-- 天气和穿搭建议 -->
+        <div class="tips" style="border-left-color: #ec4899;">
+            <h3>👗 7月西安穿搭建议</h3>
+            <ul>
+                <li>🌡️ 7月西安温度：25-35°C，天气炎热</li>
+                <li>👕 建议穿着：轻薄透气的夏装，棉质或亚麻材质</li>
+                <li>👟 鞋子选择：舒适的运动鞋或平底鞋，避免高跟鞋</li>
+                <li>🧴 防晒必备：防晒霜、遮阳帽、太阳镜</li>
+                <li>🌂 携带雨伞：既防晒又防雨</li>
+                <li>💧 多带水和湿巾，及时补水降温</li>
+                <li>📱 跟拍当天建议准备1-2套搭配，增加拍摄效果</li>
+                <li>🎒 背包选择：轻便双肩包或斜挎包</li>
+            </ul>
+        </div>
+
+        <!-- 应急联系信息 -->
+        <div class="tips" style="border-left-color: #dc2626;">
+            <h3>🚨 应急联系信息</h3>
+            <ul>
+                <li>🏨 西安富力希尔顿酒店：029-83838888</li>
+                <li>🚄 西安北站客服：029-12306</li>
+                <li>🚂 西安站客服：029-95105175</li>
+                <li>🏯 大唐芙蓉园咨询：029-85511888</li>
+                <li>🚗 高德地图客服：400-810-0080</li>
+                <li>🚑 紧急救援电话：120</li>
+                <li>👮‍♂️ 报警电话：110</li>
+                <li>🔥 火警电话：119</li>
+            </ul>
+        </div>
+
+        <!-- 购物和纪念品建议 -->
+        <div class="tips" style="border-left-color: #059669;">
+            <h3>🛍️ 购物和纪念品推荐</h3>
+            <ul>
+                <li>🏺 兵马俑复制品：回民街或大唐芙蓉园纪念品店</li>
+                <li>🍃 西安茶叶：紫阳毛尖、午子仙毫等</li>
+                <li>🥜 西安特产：核桃、柿饼、石榴等</li>
+                <li>🎭 唐三彩工艺品：大唐芙蓉园内有精美工艺品</li>
+                <li>📚 历史文化书籍：曲江创意谷的文化书店</li>
+                <li>🧥 丝绸制品：西安传统丝绸围巾、披肩</li>
+                <li>💎 SKP西安：国际品牌和轻奢商品</li>
+                <li>🎨 文创产品：曲江创意谷有独特的艺术衍生品</li>
+            </ul>
+        </div>
+
+    </div>
+
+    <script>
+        // 简单的交互效果
+        document.addEventListener('DOMContentLoaded', function() {
+            // 为时间轴项目添加动画效果
+            const timelineItems = document.querySelectorAll('.timeline-item');
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateX(0)';
+                    }
+                });
+            });
+
+            timelineItems.forEach(item => {
+                item.style.opacity = '0';
+                item.style.transform = 'translateX(-20px)';
+                item.style.transition = 'all 0.6s ease';
+                observer.observe(item);
+            });
+
+            // 地图按钮点击统计
+            const mapButton = document.querySelector('.map-button');
+            mapButton.addEventListener('click', function() {
+                console.log('用户点击了升级版高德地图链接');
+                // 这里可以添加统计代码
+            });
+
+            // 新增景点高亮效果
+            const newAdditions = document.querySelectorAll('.new-addition');
+            newAdditions.forEach(item => {
+                item.addEventListener('mouseenter', function() {
+                    this.style.transform = 'scale(1.02)';
+                    this.style.transition = 'transform 0.3s ease';
+                });
+
+                item.addEventListener('mouseleave', function() {
+                    this.style.transform = 'scale(1)';
+                });
+            });
+
+            // 费用计算器
+            function calculateTotalCost() {
+                const transportation = 201;
+                const tickets = 219;
+                const food = 300; // 估算
+                const accommodation = 1200; // 2晚
+                const total = transportation + tickets + food + accommodation;
+
+                console.log(`总预算估算：${total}元`);
+                return total;
+            }
+
+            // 页面加载完成后计算总费用
+            const totalCost = calculateTotalCost();
+
+            // 添加费用总览
+            const costSummary = document.createElement('div');
+            costSummary.className = 'tips';
+            costSummary.style.borderLeftColor = '#7c3aed';
+            costSummary.innerHTML = `
+                <h3>💰 三日游总费用估算</h3>
+                <ul>
+                    <li>🏨 住宿费用：1200元 (2晚)</li>
+                    <li>🚗 交通费用：201元</li>
+                    <li>🎫 景点门票：219元</li>
+                    <li>🍽️ 餐饮费用：约300元</li>
+                    <li><strong>📊 预计总费用：约1920元/人</strong></li>
+                    <li><small>* 不含购物和个人消费</small></li>
+                </ul>
+            `;
+
+            document.querySelector('.container').appendChild(costSummary);
+        });
+
+        // 天气信息获取（示例功能）
+        function getWeatherInfo() {
+            // 这里可以集成实际的天气API
+            const weatherTips = {
+                temperature: '25-35°C',
+                condition: '晴转多云',
+                humidity: '60-70%',
+                tips: ['注意防晒', '多补水', '备雨具']
+            };
+
+            return weatherTips;
+        }
+
+        // 实时路况提醒
+        function checkTrafficCondition() {
+            // 这里可以集成高德地图的实时路况API
+            console.log('建议出行前查看实时路况');
+        }
+
+        // 页面离开提醒
+        window.addEventListener('beforeunload', function(e) {
+            if (document.querySelector('.map-button').clicked) {
+                e.preventDefault();
+                e.returnValue = '确定要离开吗？记得保存您的行程规划！';
+            }
+        });
+    </script>
+</body>
+</html>
